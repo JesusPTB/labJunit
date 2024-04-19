@@ -11,6 +11,17 @@ public class Main {
 		double p = c.produit(10, 20);
 		System.out.println("Le produit de 10 et 20 : "+p);
 
+		CompteBancaire cb = new CompteBancaire();
+
+		cb.crediterSolde(100);
+		System.out.println("Le solde après crédit de 100 : "+cb.getSolde());
+
+		cb.debiterSolde(50);
+		System.out.println("Le solde après débit de 50 : "+cb.getSolde());
+
+		cb.debiterSolde(100);
+		System.out.println("Le solde après débit de 100 : "+cb.getSolde());
+
 	}
 
 }
