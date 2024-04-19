@@ -8,33 +8,41 @@ class TestCompteBancaire {
 
     @Test
     void crediterSoldeMontantPositif() {
-        CompteBancaire compte = new CompteBancaire();
-        compte.crediterSolde(50);
-        assertEquals(50, compte.getSolde());
+        CompteBancaire c = new CompteBancaire();
+        c.crediterSolde(50);
+        assertEquals(50, c.getSolde());
     }
 
     @Test
     void crediterSoldeMontantNegatif() {
-        CompteBancaire compte = new CompteBancaire();
-        compte.crediterSolde(-50);
-        assertEquals(0, compte.getSolde());
+        CompteBancaire c = new CompteBancaire();
+        assertThrows(IllegalArgumentException.class, () -> c.crediterSolde(-50));
+    }
+
+    @Test
+    void crediterSoldeZero() {
+        CompteBancaire c = new CompteBancaire();
+        assertThrows(IllegalArgumentException.class, () -> c.crediterSolde(0));
     }
 
 
     @Test
-    void debiterSoldeMontantPositif () {
+    void debiterSoldeMontantNonDisponible () {
         CompteBancaire c = new CompteBancaire();
         c.crediterSolde(100);
-        c.debiterSolde(50);
-        assertEquals(50, c.getSolde());
+        assertThrows(IllegalArgumentException.class, () -> c.debiterSolde(150));
     }
 
     @Test
     void debiterSoldeMontantNegatif () {
         CompteBancaire c = new CompteBancaire();
-        c.crediterSolde(100);
-        c.debiterSolde(-50);
-        assertEquals(100, c.getSolde());
+        assertThrows(IllegalArgumentException.class, () -> c.debiterSolde(-50));
+    }
+
+    @Test
+    void debiterSoldeZero () {
+        CompteBancaire c = new CompteBancaire();
+        assertThrows(IllegalArgumentException.class, () -> c.debiterSolde(0));
     }
 
 }
