@@ -19,9 +19,6 @@ public class Main {
 		cb.debiterSolde(50);
 		System.out.println("Le solde après débit de 50 : "+cb.getSolde());
 
-		cb.debiterSolde(100);
-		System.out.println("Le solde après débit de 100 : "+cb.getSolde());
-
 	}
 
 }
